@@ -1,9 +1,18 @@
+#setting remote back-end
+terraform {
+  cloud {
+    organization = "MikPashch"
+
+    workspaces {
+      name = "contact-form-site-worspace"
+    }
+  }
+}
+
 #__define providers__
-# 
 provider "aws" {
   region = "eu-north-1" # select your preferred region
 }
-
 
 
 #__create S3 bucket resources for our static web site__
@@ -53,6 +62,7 @@ resource "aws_s3_bucket_policy" "contact-form-static-website" {
   )
 }
 
+#__create cloudfront resources for our static web site__
 
 
 #__create lambda resources__
